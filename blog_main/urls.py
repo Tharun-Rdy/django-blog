@@ -11,8 +11,11 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('category/', include('blogs.urls')), 
     #Any user coming with request category in it, then that request should be forwaded to blogs.urls
-    path('<slug:slug>/', BlogsView.blogs, name='blogs'),
+    path('blogs/<slug:slug>/', BlogsView.blogs, name='blogs'),
     # search endpoint
     path('blogs/search', BlogsView.search, name='search'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  
