@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Blog
+from .models import Category, Blog, Comment
 
 # Here we need to create class
 class BlogAdmin(admin.ModelAdmin):
@@ -8,5 +8,7 @@ class BlogAdmin(admin.ModelAdmin):
     search_fields = ('id', 'title', 'category__category__name', 'status') # By using what fields you want to search the blogs
  # we want to search category field by category_name so we should use category(models)__category__name(field))
     list_editable = ('is_featured',)
+
 admin.site.register(Category)
 admin.site.register(Blog, BlogAdmin)
+admin.site.register(Comment)
